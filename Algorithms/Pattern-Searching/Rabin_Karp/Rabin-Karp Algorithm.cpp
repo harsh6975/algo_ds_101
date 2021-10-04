@@ -1,24 +1,25 @@
 #include <iostream>
 
 using namespace std;
-
+//printing pattern
 void print(string s1,int start,int m){
     string ans="";
     for(int i=start;i<(start+m);i++){
         ans+=s1[i];
     }
-    cout<<ans<<'\n';
+    cout<<i<<":"<<ans<<'\n';
 }
 
 void RabinKarp(string s1,string s2){
-    int d=256;
-    int q=101;
+    int d=256;// total character
+    int q=101;// any prime no
     int h=1;
     int n=s1.size(),m=s2.size();
     //to calculate pow(d,m-1)
     for(int i=1;i<m;i++){
         h=(h*d)%q;
     }
+     //calculating hash for pattern and text
     int hashPat=0,hashTxt=0;
     for(int i=0;i<m;i++){
         hashPat=(hashPat*d+s2[i])%q;
@@ -49,7 +50,8 @@ void RabinKarp(string s1,string s2){
 
 int main()
 {
-    string txt = "AABAACAADAABAABA";string pat="AABA";
+    string txt, pat;
+    cin>>txt>>pat;
     RabinKarp(txt,pat);
     return 0;
 }
